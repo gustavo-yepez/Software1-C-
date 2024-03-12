@@ -1,0 +1,14 @@
+C:\Users\gusta\OneDrive\Documents\Software 1 C#\InventoryAppGustavoYepez\InventoryAppGustavoYepez\bin\Debug\InventoryAppGustavoYepez.exe.config
+C:\Users\gusta\OneDrive\Documents\Software 1 C#\InventoryAppGustavoYepez\InventoryAppGustavoYepez\bin\Debug\InventoryAppGustavoYepez.exe
+C:\Users\gusta\OneDrive\Documents\Software 1 C#\InventoryAppGustavoYepez\InventoryAppGustavoYepez\bin\Debug\InventoryAppGustavoYepez.pdb
+C:\Users\gusta\OneDrive\Documents\Software 1 C#\InventoryAppGustavoYepez\InventoryAppGustavoYepez\obj\Debug\InventoryAppGustavoYepez.csproj.AssemblyReference.cache
+C:\Users\gusta\OneDrive\Documents\Software 1 C#\InventoryAppGustavoYepez\InventoryAppGustavoYepez\obj\Debug\InventoryAppGustavoYepez.Properties.Resources.resources
+C:\Users\gusta\OneDrive\Documents\Software 1 C#\InventoryAppGustavoYepez\InventoryAppGustavoYepez\obj\Debug\InventoryAppGustavoYepez.csproj.GenerateResource.cache
+C:\Users\gusta\OneDrive\Documents\Software 1 C#\InventoryAppGustavoYepez\InventoryAppGustavoYepez\obj\Debug\InventoryAppGustavoYepez.csproj.CoreCompileInputs.cache
+C:\Users\gusta\OneDrive\Documents\Software 1 C#\InventoryAppGustavoYepez\InventoryAppGustavoYepez\obj\Debug\InventoryAppGustavoYepez.exe
+C:\Users\gusta\OneDrive\Documents\Software 1 C#\InventoryAppGustavoYepez\InventoryAppGustavoYepez\obj\Debug\InventoryAppGustavoYepez.pdb
+C:\Users\gusta\OneDrive\Documents\Software 1 C#\InventoryAppGustavoYepez\InventoryAppGustavoYepez\obj\Debug\InventoryAppGustavoYepez.Add_Part.resources
+C:\Users\gusta\OneDrive\Documents\Software 1 C#\InventoryAppGustavoYepez\InventoryAppGustavoYepez\obj\Debug\InventoryAppGustavoYepez.AddProducts.resources
+C:\Users\gusta\OneDrive\Documents\Software 1 C#\InventoryAppGustavoYepez\InventoryAppGustavoYepez\obj\Debug\InventoryAppGustavoYepez.MainForm.resources
+C:\Users\gusta\OneDrive\Documents\Software 1 C#\InventoryAppGustavoYepez\InventoryAppGustavoYepez\obj\Debug\InventoryAppGustavoYepez.ModifyPart.resources
+C:\Users\gusta\OneDrive\Documents\Software 1 C#\InventoryAppGustavoYepez\InventoryAppGustavoYepez\obj\Debug\InventoryAppGustavoYepez.ModifyProduct.resources
