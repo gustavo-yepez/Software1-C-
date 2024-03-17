@@ -18,6 +18,8 @@ namespace InventoryAppGustavoYepez
         public int PartID { get; set; }
         public string Name { get; set; }
         public int Inventory { get; set; }
+        public int Max { get; set; }
+        public int Min { get; set; }
         public string Price
         {
             get { return price.ToString("C"); }
@@ -33,7 +35,6 @@ namespace InventoryAppGustavoYepez
                 }
             }
         }
-        public int Max { get; set; }
-        public int Min { get; set; }
+       
     }
 }

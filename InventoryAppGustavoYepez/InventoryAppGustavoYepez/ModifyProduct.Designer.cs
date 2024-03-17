@@ -63,6 +63,7 @@
             this.cancelAddProductbutton.TabIndex = 81;
             this.cancelAddProductbutton.Text = "Cancel";
             this.cancelAddProductbutton.UseVisualStyleBackColor = true;
+            this.cancelAddProductbutton.Click += new System.EventHandler(this.cancelAddProductbutton_Click);
             // 
             // saveNewProductButton
             // 
@@ -72,6 +73,7 @@
             this.saveNewProductButton.TabIndex = 80;
             this.saveNewProductButton.Text = "Save";
             this.saveNewProductButton.UseVisualStyleBackColor = true;
+            this.saveNewProductButton.Click += new System.EventHandler(this.saveNewProductButton_Click);
             // 
             // deleteAssociatedPartButton
             // 
@@ -81,6 +83,7 @@
             this.deleteAssociatedPartButton.TabIndex = 79;
             this.deleteAssociatedPartButton.Text = "Delete";
             this.deleteAssociatedPartButton.UseVisualStyleBackColor = true;
+            this.deleteAssociatedPartButton.Click += new System.EventHandler(this.deleteAssociatedPartButton_Click);
             // 
             // modAssociatedPartsGrid
             // 
@@ -98,6 +101,7 @@
             this.addPartToItemButton.TabIndex = 77;
             this.addPartToItemButton.Text = "Add";
             this.addPartToItemButton.UseVisualStyleBackColor = true;
+            this.addPartToItemButton.Click += new System.EventHandler(this.addPartToItemButton_Click);
             // 
             // modCandidatePartsGrid
             // 
@@ -131,6 +135,7 @@
             this.modPartSearchTextBox.Name = "modPartSearchTextBox";
             this.modPartSearchTextBox.Size = new System.Drawing.Size(203, 20);
             this.modPartSearchTextBox.TabIndex = 73;
+            this.modPartSearchTextBox.TextChanged += new System.EventHandler(this.modPartSearchTextBox_TextChanged);
             // 
             // searchPartListButton
             // 
@@ -140,6 +145,7 @@
             this.searchPartListButton.TabIndex = 72;
             this.searchPartListButton.Text = "Search";
             this.searchPartListButton.UseVisualStyleBackColor = true;
+            this.searchPartListButton.Click += new System.EventHandler(this.searchPartListButton_Click);
             // 
             // modProductMinTextBox
             // 

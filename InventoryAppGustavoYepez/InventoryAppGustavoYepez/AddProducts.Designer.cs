@@ -169,6 +169,7 @@
             this.searchPartListButton.TabIndex = 49;
             this.searchPartListButton.Text = "Search";
             this.searchPartListButton.UseVisualStyleBackColor = true;
+            this.searchPartListButton.Click += new System.EventHandler(this.searchPartListButton_Click);
             // 
             // searchPartTextBox
             // 
@@ -244,6 +245,7 @@
             this.saveNewProductButton.TabIndex = 57;
             this.saveNewProductButton.Text = "Save";
             this.saveNewProductButton.UseVisualStyleBackColor = true;
+            this.saveNewProductButton.Click += new System.EventHandler(this.saveNewProductButton_Click);
             // 
             // cancelAddProductbutton
             // 
@@ -253,6 +255,7 @@
             this.cancelAddProductbutton.TabIndex = 58;
             this.cancelAddProductbutton.Text = "Cancel";
             this.cancelAddProductbutton.UseVisualStyleBackColor = true;
+            this.cancelAddProductbutton.Click += new System.EventHandler(this.cancelAddProductbutton_Click);
             // 
             // AddProducts
             // 

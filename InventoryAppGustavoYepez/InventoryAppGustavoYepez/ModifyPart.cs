@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -155,15 +156,33 @@ namespace InventoryAppGustavoYepez
 
             if (inhouseRadioButton.Checked)
             {
+                if (!int.TryParse(modPartMacComTextBox.Text, out int machineId))
+                {
+                    MessageBox.Show("Please enter a valid numeric Machine ID.");
+                    return;
+                }
+
                 Inhouse inPart = new Inhouse(id, name, invInStock, price, maxStock, minStock, int.Parse(modPartMacComTextBox.Text));
                 Inventory.UpdatePart(id, inPart);
-                inhouseRadioButton.Checked = true;
+                
+            }
+            else if (outsourcedRadioButton.Checked)
+            {
+                string companyName = modPartMacComTextBox.Text;
+
+                if (string.IsNullOrWhiteSpace(companyName) || !companyName.All(c => char.IsLetter(c) || c == ' '))
+                {
+                    MessageBox.Show("Please enter a company a valid name.");
+                    return;
+                }
+
+                OutSourced outPart = new OutSourced(id, name, invInStock, price, maxStock, minStock, companyName);
+                Inventory.UpdatePart(id, outPart);
             }
             else
             {
-                OutSourced outPart = new OutSourced(id, name, invInStock, price, maxStock, minStock, modPartMacComTextBox.Text);
-                Inventory.UpdatePart(id, outPart);
-                outsourcedRadioButton.Checked = true;
+                MessageBox.Show("Please select a part type.");
+                return;
             }
             Close();
             MainWindow.partGridView.Update();
@@ -178,12 +197,12 @@ namespace InventoryAppGustavoYepez
 
         private void OutsourcedRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            partMacComID.Text = "Company Name";
+            
         }
 
         private void InhouseRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            partMacComID.Text = "Machine ID";
+           
         }
 
         private void ModifyPart_Load(object sender, EventArgs e)
@@ -198,6 +217,19 @@ namespace InventoryAppGustavoYepez
         private void inhouseRadioButton_CheckedChanged_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void inhouseRadioButton_CheckedChanged_2(object sender, EventArgs e)
+        {
+            {
+                partMacComID.Text = "Machine ID";
+            }
+
+        }
+
+        private void outsourcedRadioButton_CheckedChanged_2(object sender, EventArgs e)
+        {
+            partMacComID.Text = "Company Name ";
         }
     }
 }

@@ -185,9 +185,11 @@
             // 
             // productGridView
             // 
+            this.productGridView.AllowUserToAddRows = false;
             this.productGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.productGridView.Location = new System.Drawing.Point(27, 63);
             this.productGridView.Name = "productGridView";
+            this.productGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.productGridView.Size = new System.Drawing.Size(421, 193);
             this.productGridView.TabIndex = 27;
             // 
@@ -274,7 +276,7 @@
         private System.Windows.Forms.TextBox productSearchTextBox;
         private System.Windows.Forms.Button searchProductButton;
         public System.Windows.Forms.DataGridView partGridView;
-        private System.Windows.Forms.DataGridView productGridView;
+        public System.Windows.Forms.DataGridView productGridView;
         private System.Windows.Forms.Button deletePartButton;
         private System.Windows.Forms.Button modifyPartButton;
         private System.Windows.Forms.Button addPartButton;

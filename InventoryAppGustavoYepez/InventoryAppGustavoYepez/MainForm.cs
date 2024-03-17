@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace InventoryAppGustavoYepez
 {
@@ -21,10 +22,12 @@ namespace InventoryAppGustavoYepez
             var partTable = new BindingSource();
             partTable.DataSource = Inventory.Parts;
             partGridView.DataSource = partTable;
+            partGridView.ClearSelection();
 
             var prodTable = new BindingSource();
             prodTable.DataSource = Inventory.Products;
             productGridView.DataSource = prodTable;
+            productGridView.ClearSelection();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -69,6 +72,11 @@ namespace InventoryAppGustavoYepez
 
         private void modifyPartButton_Click(object sender, EventArgs e)
         {
+            if (partGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a row to modify.");
+                return;
+            }
             if (partGridView.CurrentRow.DataBoundItem.GetType() == typeof(InventoryAppGustavoYepez.Inhouse))
             {
                 Inhouse inhouse = (Inhouse)partGridView.CurrentRow.DataBoundItem;
@@ -96,30 +104,59 @@ namespace InventoryAppGustavoYepez
 
         private void searchPartButton_Click(object sender, EventArgs e)
         {
-            int searchValue = int.Parse(partSearchTextBox.Text);
-
-            if (searchValue < 1) return;
-
-            Part match = Inventory.LookupPart(int.Parse(partSearchTextBox.Text));
-
-
-            foreach (DataGridViewRow row in partGridView.Rows)
+            if (int.TryParse(partSearchTextBox.Text, out int searchValue))
             {
-                Part part = (Part)row.DataBoundItem;
-                if (part.PartID == match.PartID)
+                Part match = Inventory.LookupPart(searchValue);
+                if (match != null)
                 {
-                    row.Selected = true;
-                    break;
+                    foreach (DataGridViewRow row in partGridView.Rows)
+                    {
+                        Part part = (Part)row.DataBoundItem;
+                        row.Selected = part.PartID == match.PartID;
+                        if (row.Selected)
+                        {
+                            partGridView.FirstDisplayedScrollingRowIndex = row.Index;
+                            break;
+                        }
+                    }
                 }
                 else
                 {
-                    row.Selected = false;
+                    MessageBox.Show("No part found with the given ID.");
+                }
+            }
+            else
+            {
+                string searchString = partSearchTextBox.Text.ToLower();
+                bool found = false;
+
+                foreach (DataGridViewRow row in partGridView.Rows)
+                {
+                    Part part = (Part)row.DataBoundItem;
+                    if (part.Name.ToLower().Contains(searchString))
+                    {
+                        row.Selected = true;
+                        found = true;
+                        partGridView.FirstDisplayedScrollingRowIndex = row.Index;
+                        break; 
+                    }
+                }
+
+                if (!found)
+                {
+                    MessageBox.Show("No part found with the given name.");
                 }
             }
         }
 
         private void modifyProductButton_Click(object sender, EventArgs e)
         {
+            if (productGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a row to modify.");
+                return;
+            }
+
             Product selectedProd = (Product)productGridView.CurrentRow.DataBoundItem;
             new ModifyProduct(selectedProd).ShowDialog();
         }
@@ -145,24 +182,47 @@ namespace InventoryAppGustavoYepez
 
         private void searchProductButton_Click(object sender, EventArgs e)
         {
-            int searchValue = int.Parse(productSearchTextBox.Text);
-
-            if (searchValue < 1) return;
-
-            Product match = Inventory.LookupProduct(int.Parse(productSearchTextBox.Text));
-
-
-            foreach (DataGridViewRow row in productGridView.Rows)
+            if (int.TryParse(productSearchTextBox.Text, out int searchValue))
             {
-                Product product = (Product)row.DataBoundItem;
-                if (product.ProductID == match.ProductID)
+                Part match = Inventory.LookupPart(searchValue);
+                if (match != null)
                 {
-                    row.Selected = true;
-                    break;
+                    foreach (DataGridViewRow row in productGridView.Rows)
+                    {
+                        Part part = (Part)row.DataBoundItem;
+                        row.Selected = part.PartID == match.PartID;
+                        if (row.Selected)
+                        {
+                            productGridView.FirstDisplayedScrollingRowIndex = row.Index;
+                            break;
+                        }
+                    }
                 }
                 else
                 {
-                    row.Selected = false;
+                    MessageBox.Show("No Product found with the given ID.");
+                }
+            }
+            else
+            {
+                string searchString = productSearchTextBox.Text.ToLower();
+                bool found = false;
+
+                foreach (DataGridViewRow row in productGridView.Rows)
+                {
+                    Product prod = (Product)row.DataBoundItem;
+                    if (prod.Name.ToLower().Contains(searchString))
+                    {
+                        row.Selected = true;
+                        found = true;
+                        productGridView.FirstDisplayedScrollingRowIndex = row.Index;
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    MessageBox.Show("No Product found with the given name.");
                 }
             }
         }
@@ -175,6 +235,13 @@ namespace InventoryAppGustavoYepez
         private void addProductButton_Click(object sender, EventArgs e)
         {
             new AddProducts().ShowDialog();
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            partGridView.ClearSelection();
+            productGridView.ClearSelection();
         }
     }
 }

@@ -166,6 +166,7 @@
             this.label8.Size = new System.Drawing.Size(62, 13);
             this.label8.TabIndex = 11;
             this.label8.Text = "Machine ID";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // partIDTextBox
             // 

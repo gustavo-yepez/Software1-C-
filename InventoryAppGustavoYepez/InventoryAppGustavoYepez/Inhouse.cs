@@ -11,7 +11,7 @@ namespace InventoryAppGustavoYepez
         private int machID;
         public int MachineID { get; set; }
         public Inhouse() { }
-        public Inhouse(int partID, string name, int inventory, decimal price, int max, int min)
+        public Inhouse(int partID, string name, int inventory, decimal price, int max, int min, string text)
         {
             PartID = partID;
             Name = name;

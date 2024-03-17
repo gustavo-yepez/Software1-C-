@@ -103,11 +103,11 @@ namespace InventoryAppGustavoYepez
         }
         public static void ExampleItems()
         {
-            Product exampleProd = new Product(1, "Example Product", 5, 5.0m, 10, 5);
+            Product exampleProd = new Product(1, "Product Example", 5, 5.0m, 10, 5);
             Products.Add(exampleProd);
 
-            Part exampleInPart = new Inhouse(1, "Example In Part", 10, 5.0m, 20, 10, 1001);
-            Part exampleOutPart = new OutSourced(2, "Example Out Part", 30, 1.0m, 45, 10, "Test Co.");
+            Part exampleInPart = new Inhouse(1, "PartIn Example Test", 30, 8.0m, 30, 5, 100);
+            Part exampleOutPart = new OutSourced(2, "PartOut Example Test", 40, 3.0m, 40, 1, "Testing");
             Parts.Add(exampleInPart);
             Parts.Add(exampleOutPart);
 
