@@ -184,15 +184,15 @@ namespace InventoryAppGustavoYepez
         {
             if (int.TryParse(productSearchTextBox.Text, out int searchValue))
             {
-                Part match = Inventory.LookupPart(searchValue);
+                Product match = Inventory.LookupProduct(searchValue);
                 if (match != null)
                 {
                     foreach (DataGridViewRow row in productGridView.Rows)
                     {
-                        Part part = (Part)row.DataBoundItem;
-                        row.Selected = part.PartID == match.PartID;
-                        if (row.Selected)
+                        Product product = (Product)row.DataBoundItem; 
+                        if (product.ProductID == match.ProductID)
                         {
+                            row.Selected = true;
                             productGridView.FirstDisplayedScrollingRowIndex = row.Index;
                             break;
                         }

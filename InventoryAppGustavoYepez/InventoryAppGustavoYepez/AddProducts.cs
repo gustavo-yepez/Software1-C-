@@ -72,19 +72,37 @@ namespace InventoryAppGustavoYepez
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            int partID = int.Parse(searchPartTextBox.Text);
-            Part match = Inventory.LookupPart(partID);
-            foreach (DataGridViewRow row in candidatePartsGrid.Rows)
+            candidatePartsGrid.ClearSelection();
+
+            if (int.TryParse(searchPartTextBox.Text, out int partID))
             {
-                Part part = (Part)row.DataBoundItem;
-                if (part.PartID == match.PartID)
+                Part match = Inventory.LookupPart(partID);
+                if (match != null && match.PartID != 0) 
                 {
-                    row.Selected = true;
-                    break;
+                    foreach (DataGridViewRow row in candidatePartsGrid.Rows)
+                    {
+                        Part part = (Part)row.DataBoundItem;
+                        row.Selected = (part.PartID == match.PartID);
+                        if (row.Selected)
+                        {
+                            candidatePartsGrid.FirstDisplayedScrollingRowIndex = row.Index;
+                            break;
+                        }
+                    }
                 }
-                else
+            }
+            else
+            {
+                string searchName = searchPartTextBox.Text.ToLower();
+                foreach (DataGridViewRow row in candidatePartsGrid.Rows)
                 {
-                    row.Selected = false;
+                    Part part = (Part)row.DataBoundItem;
+                    if (part.Name.ToLower().Contains(searchName))
+                    {
+                        row.Selected = true;
+                        candidatePartsGrid.FirstDisplayedScrollingRowIndex = row.Index;
+                        break;
+                    }
                 }
             }
         }
@@ -144,19 +162,36 @@ namespace InventoryAppGustavoYepez
 
         private void searchPartListButton_Click(object sender, EventArgs e)
         {
-            int partID = int.Parse(searchPartTextBox.Text);
-            Part match = Inventory.LookupPart(partID);
+            candidatePartsGrid.ClearSelection();
+
+            if (int.TryParse(searchPartTextBox.Text, out int partID))
+            {
+                Part match = Inventory.LookupPart(partID);
+                if (match != null) 
+                {
+                    foreach (DataGridViewRow row in candidatePartsGrid.Rows)
+                    {
+                        Part part = (Part)row.DataBoundItem;
+                        if (part.PartID == match.PartID)
+                        {
+                            row.Selected = true;
+                            candidatePartsGrid.FirstDisplayedScrollingRowIndex = row.Index;
+                            return; 
+                        }
+                    }
+                }
+            }
+
+
+            string searchString = searchPartTextBox.Text.ToLower();
             foreach (DataGridViewRow row in candidatePartsGrid.Rows)
             {
                 Part part = (Part)row.DataBoundItem;
-                if (part.PartID == match.PartID)
+                if (part.Name.ToLower().Contains(searchString))
                 {
                     row.Selected = true;
-                    break;
-                }
-                else
-                {
-                    row.Selected = false;
+                    candidatePartsGrid.FirstDisplayedScrollingRowIndex = row.Index;
+                    break; 
                 }
             }
         }

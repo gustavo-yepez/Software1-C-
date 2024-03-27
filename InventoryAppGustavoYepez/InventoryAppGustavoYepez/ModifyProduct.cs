@@ -123,19 +123,38 @@ namespace InventoryAppGustavoYepez
 
         private void searchPartListButton_Click(object sender, EventArgs e)
         {
-            int partID = int.Parse(modPartSearchTextBox.Text);
-            Part match = Inventory.LookupPart(partID);
-            foreach (DataGridViewRow row in modCandidatePartsGrid.Rows)
+            modCandidatePartsGrid.ClearSelection();
+
+            if (int.TryParse(modPartSearchTextBox.Text, out int partID))
             {
-                Part part = (Part)row.DataBoundItem;
-                if (part.PartID == match.PartID)
+                Part match = Inventory.LookupPart(partID);
+                if (match != null)
                 {
-                    row.Selected = true;
-                    break;
+                    foreach (DataGridViewRow row in modCandidatePartsGrid.Rows)
+                    {
+                        Part part = (Part)row.DataBoundItem;
+                        if (part.PartID == match.PartID)
+                        {
+                            row.Selected = true;
+                            modCandidatePartsGrid.FirstDisplayedScrollingRowIndex = row.Index;
+                            return; 
+                        }
+                    }
                 }
-                else
+            }
+            else
+            {
+                
+                string searchString = modPartSearchTextBox.Text.ToLower();
+                foreach (DataGridViewRow row in modCandidatePartsGrid.Rows)
                 {
-                    row.Selected = false;
+                    Part part = (Part)row.DataBoundItem;
+                    if (part.Name.ToLower().Contains(searchString))
+                    {
+                        row.Selected = true;
+                        modCandidatePartsGrid.FirstDisplayedScrollingRowIndex = row.Index;
+                        break; 
+                    }
                 }
             }
         }
